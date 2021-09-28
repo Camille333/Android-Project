@@ -3,8 +3,12 @@ package com.example.myapplication;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class RMBActivity extends AppCompatActivity implements View.OnClickListener{
+    private static final String TAG = "RMBActivity";
     EditText editTextren;
     TextView Result;
     double r1 = 0.15026973417;   //美元汇率
@@ -23,6 +28,11 @@ public class RMBActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rmb);
         setViews();
+        //读取保存的数据
+        SharedPreferences sp = getSharedPreferences("rate1", Activity.MODE_PRIVATE);
+        r1 = sp.getFloat("rate1", 0.1f);
+        Log.i(TAG, "onCreate：get from sp rate1=" + r1);//记录日志
+
     }
 
     public void setViews() {
@@ -95,5 +105,11 @@ public class RMBActivity extends AppCompatActivity implements View.OnClickListen
             r2 = bundle.getDouble("rate2", 0.126632931655);
             r3 = bundle.getDouble("rate3", 0.1143692365182);
         }
+        //修改保存内容
+        SharedPreferences sp = getSharedPreferences("rate1", Activity.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putFloat("rate1", (float) r1);
+        editor.apply();
+        Log.i(TAG, "onActivityResult：save to a sp" + r1);
     }
 }
