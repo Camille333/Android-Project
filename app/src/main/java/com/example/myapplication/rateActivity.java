@@ -24,6 +24,7 @@ public class rateActivity extends AppCompatActivity {
         rate2 = (EditText)findViewById(R.id.rate2);
         rate3 = (EditText)findViewById(R.id.rate3);
         Intent intent =getIntent();
+
         r1 = intent.getDoubleExtra("rate1",0.15026973417);
         r2 = intent.getDoubleExtra("rate2",0.126632931655);
         r3 = intent.getDoubleExtra("rate3",0.1143692365182);
