@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -16,15 +18,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.MalformedURLException;
+import java.util.List;
 
 public class NetworkActivity extends AppCompatActivity implements Runnable{
-    private static final String TAG = "threadActivity";
+    private static final String TAG = "NetworkActivity";
     Handler handler;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_network);
-
         handler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(Message msg) {
@@ -36,6 +38,7 @@ public class NetworkActivity extends AppCompatActivity implements Runnable{
                 }
                 super.handleMessage(msg);
             }
+
         };
         //开启线程
         Thread t = new Thread(this);
