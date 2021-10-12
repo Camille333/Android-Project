@@ -1,127 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp"
     tools:context=".RMBActivity">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="529dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="8dp">
+    <EditText
+        android:layout_marginVertical="10dp"
+        android:id="@+id/input"
+        android:inputType="numberDecimal"
+        android:gravity="center"
+        android:hint="input RMB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="72dp"
-            android:orientation="horizontal">
+    <TextView
+        android:textSize="30sp"
+        android:layout_marginVertical="10dp"
+        android:id="@+id/output"
+        android:gravity="center"
+        android:text="HELLO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="163dp"
-                android:layout_height="42dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:text="人民币金额："
-                android:textSize="26sp"
-                app:layout_constraintBottom_toTopOf="@+id/edittxt_ren"
-                app:layout_constraintHorizontal_bias="0.176"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edittxt_huilv"
-                app:layout_constraintVertical_bias="0.812" />
-
-            <EditText
-                android:id="@+id/editTextren"
-                android:layout_width="192dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="numberDecimal"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.326"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.181" />
-
-        </LinearLayout>
+    <Button
+        android:layout_marginVertical="5dp"
+        android:id="@+id/dollar"
+        android:onClick="onClick"
+        android:text="dollar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginVertical="5dp"
+        android:onClick="onClick"
+        android:id="@+id/euro"
+        android:text="euro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginVertical="5dp"
+        android:onClick="onClick"
+        android:id="@+id/won"
+        android:text="won"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/jump"
+        android:text="config"
+        android:onClick="open"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:onClick="onClick"
-            android:text="DOLLAR"
-            app:layout_constraintHorizontal_bias="0.29"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittxt_ren"
-            tools:layout_editor_absoluteY="350dp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:onClick="onClick"
-            android:text="WON"
-            app:layout_constraintHorizontal_bias="0.29"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittxt_ren"
-            tools:layout_editor_absoluteY="350dp" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:onClick="onClick"
-            android:text="EURO"
-            app:layout_constraintHorizontal_bias="0.29"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittxt_ren"
-            tools:layout_editor_absoluteY="350dp" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:onClick="onClick"
-            android:text="CONFIG"
-            app:layout_constraintHorizontal_bias="0.29"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittxt_ren"
-            tools:layout_editor_absoluteY="350dp" />
-
-        <TextView
-            android:id="@+id/Result"
-            android:layout_width="match_parent"
-            android:layout_height="152dp"
-            android:textSize="34sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

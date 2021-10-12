@@ -1,51 +1,71 @@
 package com.example.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class rateActivity extends AppCompatActivity {
-    EditText rate1;
-    EditText rate2;
-    EditText rate3;
-    double r1;  //美元汇率
-    double r2;  //欧元汇率
-    double r3;  //英镑汇率
+public class rateActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final String TAG = "rateActivity";
+    float dollarRate;
+    float euroRate;
+    float wonRate;
+    EditText dollar;
+    EditText euro;
+    EditText won;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
-        rate1 = (EditText)findViewById(R.id.rate1);
-        rate2 = (EditText)findViewById(R.id.rate2);
-        rate3 = (EditText)findViewById(R.id.rate3);
-        Intent intent =getIntent();
 
-        r1 = intent.getDoubleExtra("rate1",0.15026973417);
-        r2 = intent.getDoubleExtra("rate2",0.126632931655);
-        r3 = intent.getDoubleExtra("rate3",0.1143692365182);
-        rate1.setText(String.valueOf(r1));
-        rate2.setText(String.valueOf(r2));
-        rate3.setText(String.valueOf(r3));
+        dollar = findViewById(R.id.dollarRate);
+        euro = findViewById(R.id.euroRate);
+        won = findViewById(R.id.wonRate);
+        //获取汇率数据
+        Intent intent = getIntent();
+        dollarRate = intent.getFloatExtra("dollarRate",6.8f);
+        euroRate = intent.getFloatExtra("euroRate",6.8f);
+        wonRate = intent.getFloatExtra("wonRate",6.8f);
+
+        dollar.setText(String.valueOf(dollarRate));
+        euro.setText(String.valueOf(euroRate));
+        won.setText(String.valueOf(wonRate));
     }
 
+    @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.save) {   //保存汇率值并跳回到汇率换算页面
+        if(v.getId() == R.id.save){
             Intent intent = getIntent();
-            r1 = Double.valueOf(rate1.getText().toString());
-            r2 = Double.valueOf(rate2.getText().toString());
-            r3 = Double.valueOf(rate3.getText().toString());
-            Bundle bundle=new Bundle();
-            bundle.putDouble("rate1", r1);
-            bundle.putDouble("rate2", r2);
-            bundle.putDouble("rate3", r3);
+
+            //数据的返回类型为bundle
+            dollarRate = Float.valueOf(dollar.getText().toString());
+            euroRate = Float.valueOf(euro.getText().toString());
+            wonRate = Float.valueOf(won.getText().toString());
+
+            Bundle bundle = new Bundle();
+            bundle.putFloat("dollarRate",dollarRate);
+            bundle.putFloat("euroRate",euroRate);
+            bundle.putFloat("wonRate",wonRate);
             intent.putExtras(bundle);
 
-            setResult(3,intent);//设置code及带回的数据
+            //保存修改后的汇率数据到sp中
+            SharedPreferences sp= getSharedPreferences("myRate", Activity.MODE_PRIVATE);
+            SharedPreferences.Editor editor=  sp.edit();
+            editor.putFloat("dollarRate",dollarRate);
+            editor.putFloat("euroRate",euroRate);
+            editor.putFloat("wonRate",wonRate);
+            Log.i(TAG,"saved");
+            editor.apply();
+
+            //startActivity(intent)将数据传回到主页面
+            setResult(3,intent);
             finish();
         }
     }
