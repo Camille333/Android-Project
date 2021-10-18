@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">汇率换算</string>
+    <string name="dollar">Dollar</string>
+    <string name="euro">euro</string>
+    <string name="won">won</string>
+    <string name="hello">hello</string>
+    <string name="config">config</string>
+    <string name="save">save</string>
+    <string name="setting">setting</string>
+    <string name="RMB">yuan</string>
+    <string name="change">转换</string>
+    <string name="inputRMB">input RMB</string>
+
 </resources>

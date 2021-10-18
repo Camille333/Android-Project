@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="text">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+    <style name="rate">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+
+
+</resources>
