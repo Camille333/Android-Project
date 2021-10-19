@@ -18,6 +18,7 @@
             android:exported="true" />
         <activity
             android:name=".ShowActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"
             android:exported="true" />
         <activity
             android:name=".MyListActivity"
